@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Period Tracker</title>
+  <style>
+    /* CSS styles for layout */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    .calendar {
+      border: 1px solid #ccc;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    .chatbot {
+      border: 1px solid #ccc;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    .emotion-detector {
+      border: 1px solid #ccc;
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Period Tracker</h1>
+    <div class="calendar" id="calendar">
+      <h2>Period Calendar</h2>
+      <div id="calendar-content">
+      <!-- Calendar content will go here -->
+    </div></div>
+    <div class="chatbot" id="chatbot">
+      <h2>Chatbot</h2>
+      <div id="chatbot-content">
+      <!-- Chatbot content will go here -->
+    </div></div>
+    <div class="emotion-detector" id="emotion-detector">
+      <h2>Emotion Detector</h2>
+      <div id="emotion-detector-content">
+      <!-- Emotion detector content will go here -->
+    </div></div>
+  </div>
+
+  <!-- JavaScript code -->
+  <script>
+    // JavaScript code for functionality
+    
+  function generateCalendar(year, month) {
+    const calendarContainer = document.getElementById('calendar');
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+    const firstDayOfMonth = new Date(year, month, 1).getDay();
+    const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+    let html = '<table><thead><tr>';
+    daysOfWeek.forEach(day => {
+      html += `<th>${day}</th>`;
+    });
+    html += '</tr></thead><tbody><tr>';
+
+    for (let i = 0; i < firstDayOfMonth; i++) {
+      html += '<td></td>';
+    }
+
+    for (let day = 1; day <= daysInMonth; day++) {
+      html += `<td>${day}</td>`;
+      if ((firstDayOfMonth + day) % 7 === 0) {
+        html += '</tr><tr>';
+      }
+    }
+    html += '</tr></tbody></table>';
+    calendarContainer.innerHTML = html;
+  
+    }
+
+    // Chatbot functionality
+    function chatBot() {
+      
+    const chatbotContainer = document.getElementById('chatbot');
+    // Add your chatbot logic here
+    chatbotContainer.innerHTML = "<p>This is a chatbot</p>";
+  }
+  
+
+    // Emotion detector functionality
+    // Emotion detector functionality
+  function emotionDetector() {
+    const emotionDetectorContainer = document.getElementById('emotion-detector');
+    // Add your emotion detector logic here
+    emotionDetectorContainer.innerHTML = "<p>This is an emotion detector</p>";
+  }
+  const currentDate = new Date();
+  generateCalendar(currentDate.getFullYear(), currentDate.getMonth());
+  chatBot();
+  emotionDetector();
+  </script>
+</body>
+</html>
